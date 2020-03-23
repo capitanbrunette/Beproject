@@ -1,0 +1,25 @@
+{
+    "name": "angela/beproject",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Angela Brunet",
+            "email": "angela.brunet@students.salle.url.edu"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "slim/slim": "^3.0",
+        "slim/twig-view": "dev-master",
+        "twbs/bootstrap": "4.4.1",
+        "components/jquery": "^3.3",
+        "doctrine/dbal": "^3.0@dev",
+        "dflydev/fig-cookies": "^2.0@dev",
+        "slim/flash": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "BeProject\\": "src/"
+        }
+    }
+}

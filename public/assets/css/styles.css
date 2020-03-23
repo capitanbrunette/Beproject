@@ -1,0 +1,90 @@
+/*@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";*/
+
+body{
+    margin: 0px;
+    padding: 0px;
+    font-weight: 600;
+}
+
+.navbar-brand{
+    margin: 0px 20px;
+}
+
+.content{
+    padding-top: 86px;
+}
+
+section{
+    padding: 80px 40px 80px;
+}
+
+img{
+    max-width: 600px;
+    max-height: 550px;
+}
+
+card{
+    whith: 300px;
+}
+
+.form-control{
+    min-width: 420px;
+}
+
+.input-group > .form-control, .input-group > .form-control-plaintext, .input-group > .custom-select, .input-group > .custom-file{
+    min-width: 420px;
+}
+
+form .error{
+    color: indianred;
+}
+
+.is-valid{
+    color: seagreen;
+}
+
+.is-invalid{
+    color: indianred;
+}
+
+.nav-item{
+    font-size: 20px;
+    /*font-family: 'Poppins', sans-serif;*/
+    font-size: 1.5em;
+    font-weight: 600;
+    line-height: 1.7em;
+}
+
+/*.ul li a:link{
+    color: white;
+}
+.ul li a:hover{
+    color: #bbd1e8;
+}
+.ul li a:active{
+    color: #3b7acc;
+}*/
+
+.navbar-collapse{
+    flex-flow: row-reverse;
+}
+
+
+
+#customFile-error{
+    position: relative;
+    top: 30px;
+}
+#customFile{
+    position:absolute;
+}
+
+.container-fluid{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+
+
+
+

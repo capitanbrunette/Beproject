@@ -1,0 +1,259 @@
+{% extends "base.twig" %}
+
+{% block sidebar %}
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <img src="" style="margin: 5px 10px;"  height="50" class="d-inline-block align-top" alt="">
+            <!-- <h3>PWBOX</h3>   -->
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item active ">
+                    <a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
+                </li>
+
+            </ul>
+
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="modal" data-target="#ModalSingIn" style="color: white; margin: 0px 20px;">Sign In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"  data-toggle="modal" data-target="#ModalRegister" style="color: white; margin: 0px 20px;">Register</a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+{% endblock %}
+
+{% block content %}
+    <!-- Modal -->
+    <div class="modal fade" id="ModalSingIn" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Sing In</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="signin_form" data-toggle="validator" role="form">
+                    <fieldset>
+                        <div class="modal-body">
+                            <div id="login_incorrecte" class="alert alert-danger d-none" role="alert">Error: Usuari o contrassenya incorrectes </div>
+                            <!-- Username input-->
+                            <div class="form-group">
+                                <label class="control-label">Username or email</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <span class="oi oi-person" title="icon person" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+                                    <input class="form-control"  id="user_name" name="user_name" placeholder="Username"  type="text" required>
+                                </div>
+                            </div>
+
+                            <!-- Password input-->
+                            <div class="form-group">
+                                <label class="control-label">Password</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <span class="oi oi-key" title="icon key" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+                                    <input class="form-control" id="user_password" name="user_password" placeholder="Password"  type="password" required>
+                                </div>
+
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#ModalRegister" data-dismiss="modal">Register</button>
+                    <button onclick="signIn()" class="btn btn-primary" >Sign in</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="ModalRegister" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Register</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="registre_incorrecte" class="alert alert-danger d-none" role="alert">Error: Username or Email are already taken </div>
+                    <form id="register_form">
+                        <fieldset>
+
+                            <!-- Username input-->
+                            <div class="form-group">
+                                <label class="control-label">Username</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <span class="oi oi-person" title="icon person" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+                                    <input class="form-control"  id="username" name="username" placeholder="Username"  type="text">
+                                </div>
+                            </div>
+
+                            <!-- Email input-->
+                            <div class="form-group">
+                                <label class="control-label">E-Mail</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <span class="oi oi-envelope-closed" title="icon envelope-closed" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+                                    <input class="form-control" id="email" name="email" placeholder="email@example.com"  type="email">
+                                </div>
+                            </div>
+
+                            <!-- Password input-->
+                            <div class="form-group">
+                                <label class="control-label">Password</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <span class="oi oi-key" title="icon key" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+                                    <input class="form-control"  name="password" id="password" placeholder="Password"  type="password">
+                                </div>
+                            </div>
+
+                            <!-- Confirm Password input-->
+                            <div class="form-group">
+                                <label class="control-label">Confirm Password</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <span class="oi oi-key" title="icon key" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+                                    <input id="confirm_password" name="confirm_password" placeholder="Confirm Password" class="form-control"  type="password">
+                                </div>
+                            </div>
+
+                        </fieldset>
+                        <div class="modal-footer">
+                            <button type="button" data-toggle="modal" data-target="#ModalSingIn" data-dismiss="modal" class="btn btn-secondary">Sing in</button>
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="content">
+        <div class="container-fluid">
+            <section id="firstSection" style="background-color: #bbd1e8">
+                <div class="d-flex justify-content-center align-items-center">
+                    <div class="col-sm-2">
+                        <h1 style="color: #61072b">No esperes sentado, y pon tu creatividad a trabajar con Be project</h1>
+                        <p style="color: white">Un espacio para conseguir ser quién quieres ser. Una plataforma diseñada para impulsar tus proyectos, de una manera fàcil y ràpida.</p>
+                    </div>
+                    <div class="p-2">
+                        <img src="{{ base_url() }}/assets/images/chair@2x.jpg" class="img-fluid" alt="Responsive image">
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="secondSection" style="background-color: #61072b">
+                <div class="d-flex justify-content-center align-items-center">
+                    <div class="p-2">
+                        <img src="" class="img-fluid" alt="Responsive image">
+                    </div>
+                    <div class="col-sm-2">
+                        <h3 style="color: #fdb7ac">Encuentra a tu equipo perfecto de trabajo</h3>
+                        <p style="color: white">Be project está diseñado para la colaboración creativa. Comparte tus ideas, colabora con gente de otras disciplines y poner en marcha vuestros proyectos. Por fin.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="thirdSection" style="background-color: #acd1a0">
+                <div class="d-flex justify-content-center align-items-center">
+                    <div class="col-sm-2">
+                        <h3 style="color: #342e8b">Mantén todo organizado sin interrumpir el trabajo</h3>
+                        <p style="color: white">Pwbox reúne tus archivos en un mismo lugar central, donde podrás encontrarlos fácilmente. Además, estos se sincronizarán de manera segura en todos tus dispositivos, para que puedas acceder a ellos en cualquier momento y lugar. Se acabó perder el tiempo en buscar tu trabajo.</p>
+                    </div>
+                    <div class="p-2">
+                        <img src="" class="img-fluid" alt="Responsive image">
+                    </div>
+                </div>
+            </section>
+
+            <section id="fourthSection" style="background-color: white">
+                <div class="card-deck">
+                    <div class="card">
+                        <img class="card-img-top" src="" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Gratuito</h5>
+                            <p class="card-text">Simplemente, funciona<br>Desde 2 GB<br>Hasta 18 GB</p>
+                            <p class="card-text"><small class="text-muted">(500 MB por recomendación)</small></p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img class="card-img-top" src="" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Pro</h5>
+                            <p class="card-text">Lleva contigo todas tus cosas adonde vayas<br>Planes de 100 GB, 200 GB o 500 GB</p>
+                            <p class="card-text"><small class="text-muted">Desde $9.99/mes</small></p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img class="card-img-top" src="" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Business</h5>
+                            <p class="card-text">Diseñado para tu empresa<br>1 TB para cinco usuarios</p>
+                            <p class="card-text"><small class="text-muted">Facturación centralizada</small></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+    <div class="footer__container" style="background-color: #000000; padding: 50px; width: 100%; text-align: center; color:white">
+        <p>Created by Àngela Brunet Rodríguez -  2018 ©</p>
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ base_url() }}/assets/js/validate.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}/assets/js/signInUp.js"></script>
+{% endblock %}

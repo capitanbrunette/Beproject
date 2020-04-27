@@ -36,6 +36,9 @@ $container['repository'] = function($container) {
 };
 
 
+
+/*USER SIGN UP*/
+
 $container['post_user_service'] = function($container) {
     $useCase = new BeProject\Model\UseCase\PostUserUseCase(
         $container->get('repository')
@@ -44,11 +47,31 @@ $container['post_user_service'] = function($container) {
     return $useCase;
 };
 
+/*USER SIGN IN*/
 
 $container['signin'] = function ($container){
     $user_signed = new BeProject\Model\UseCase\SignUserIn($container->get('repository'));
     return $user_signed;
 };
+
+
+$container['configuration'] = function ($container){
+    $user_settings = new BeProject\Model\UseCase\GetSettingsUseCase($container->get('repository'));
+    return $user_settings;
+};
+
+$container['profile'] = function ($container){
+    $user_profile = new BeProject\Model\UseCase\GetProfileUseCase($container->get('repository'));
+    return $user_profile;
+};
+
+
+$container['delete'] = function ($container){
+    $user_to_delete = new BeProject\Model\UseCase\DeleteUserUseCase($container->get('repository'));
+    return $user_to_delete;
+};
+
+
 
 
 

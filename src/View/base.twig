@@ -11,6 +11,7 @@
             <link rel="stylesheet" href="{{ base_url() }}/assets/css/bootstrap-reboot.css">
             <link rel="stylesheet" href="{{ base_url() }}/assets/css/styles.css">
             <link rel="stylesheet" href="{{ base_url() }}/assets/css/open-iconic-bootstrap.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         {% endblock  %}
         <title>Be Project</title>
     {% endblock  %}
@@ -36,12 +37,61 @@
     <script src="{{ base_url() }}/assets/js/jquery.slim.js"></script>
     <script src="{{ base_url() }}/assets/js/bootstrap.bundle.js"></script>
     <script src="{{ base_url() }}/assets/js/bootstrap.js"></script>
+    <script src="{{ base_url() }}/assets/js/main.js"></script>
 {% endblock %}
 
 <footer>
+
     {% block footer %}
+
+
+    <div class="footer__container p-4" style="background-color: #000000; width: 100%; color:white">
+
+
+
+        <div class="row justify-content-end pr-5">
+                <!-- Facebook -->
+                <a class="fb-ic">
+                    <i class="fa fa-facebook white-text mr-4"> </i>
+                </a>
+                <!-- Twitter -->
+                <a class="tw-ic">
+                    <i class="fa fa-instagram white-text mr-4"> </i>
+                </a>
+                <!-- Google +-->
+                <a class="gplus-ic">
+                    <i class="fa fa-linkedin white-text mr-4"> </i>
+                </a>
+                <!--Linkedin -->
+                <a class="li-ic">
+                    <i class="fa fa-pinterest white-text mr-4"> </i>
+                </a>
+                <!--Instagram-->
+                <a class="ins-ic">
+                    <i class="fa fa-dribbble white-text"> </i>
+                </a>
+        </div>
+
+        <div class="row justify-content-center">
+            <a class="mr-4 footer-link" href="#!">About us</a>
+            <a class="mr-4 footer-link" href="#!">Contact</a>
+            <a class="mr-4 footer-link" href="#!">Help</a>
+            <a class="mr-4 footer-link" href="#!">Policy</a>
+            <a class="mr-4 footer-link" href="#!">Terms</a>
+        </div>
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2020 Copyright:
+            <a class="footer-link" href="">be.test</a>
+        </div>
+        <!-- Copyright -->
+
+    </div>
+
     {% endblock %}
+
 </footer>
+
 
 </body>
 </html>

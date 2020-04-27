@@ -1,0 +1,232 @@
+{% extends "base.twig" %}
+
+
+{% block title %}BeProject Profile{% endblock %}
+
+
+
+{% block sidebar %}
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <!-- <img src="" style="margin: 5px 10px;"  height="50" class="d-inline-block align-top" alt=""> -->
+            <h4>Be Project</h4>
+        </a>
+
+        <button style="outline: none" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon oi oi-menu"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white; margin: 0 20px;">Messages<span class="oi oi-chat" title="icon key" aria-hidden="true"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://be.test/{{ id }}/notifications" style="color: white; margin: 0 20px;">Notification <span class="oi oi-bell" title="icon key" aria-hidden="true"></span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" style="color: white;" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hello {{ id }}
+                        <img class="profile-image-menu rounded-circle" width="35" height="35" src="{{ base_url() }}/assets/images/profiles/{{ id }}.jpg">
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item" href="http://be.test/configuration/{{ id }}">Configuration</a>
+                        <a class="dropdown-item" href="http://be.test/logout">Sign Out</a>
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
+    </nav>
+
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+        <section>
+            <div class="row">
+                <div class="col">
+                    <div class="card card-profile">
+                        <div class="card-avatar">
+                            <img src="{{ base_url() }}/assets/images/profiles/{{ id }}.jpg">
+                        </div>
+                        <div class="card-body card-body-profile">
+                            <h6 class="card-category text-uppercase">{{ user['username'] }}</h6>
+                            <h4>{{ user['name'] }} {{ user['fsurname'] }} {{ user['lsurname'] }}</h4>
+                            <h6 class="card-location">{{ user['neighborhood'] }} {{ user['city'] }} {{ user['state'] }} {{ user['country'] }}</h6>
+                            <h6 class="card-quote">{{ user['quote'] }}</h6>
+                            <p class="card-text">{{ user['about'] }}</p>
+                            {% if isadmin %}
+                                <button type="button" class="btn btn-primary">Edit Profile</button>
+                            {% else %}
+                                <button type="button" class="btn btn-primary">Follow</button>
+                                <button type="button" class="btn btn-primary">Message</button>
+                            {% endif %}
+
+
+
+                            <div class="row">
+                                <div class="col-lg-6 justify-content-end">
+                                    <h6 class="card-element">Followers: </h6>
+                                    <h6 class="card-element">Following: </h6>
+                                    <h6 class="card-element">Projects done: </h6>
+                                    <h6 class="card-element">Collaborations: </h6>
+                                </div>
+                                <div class="col-lg-6 justify-content-start">
+                                    <h6 class="card-element">{{ followers }}</h6>
+                                    <h6 class="card-element">{{ following }}</h6>
+                                    <h6 class="card-element">{{ nprojects }}</h6>
+                                    <h6 class="card-element">{{ ncollabs }}</h6>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="tab-profile">
+                        <div class="tab-nav">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="projects-tab" data-toggle="tab" href="#projects" role="tab" aria-controls="home" aria-selected="true">Projects</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="collaborations-tab" data-toggle="tab" href="#collaborations" role="tab" aria-controls="profile" aria-selected="false">Collaborations</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">About</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="tab-body">
+                            <div class="tab-content profile-tab" id="myTabContent">
+                                <div class="tab-pane fade show active" id="projects" role="tabpanel" aria-labelledby="home-tab">
+
+                                    <div class="row">
+
+                                        {% for project in projects%}
+
+                                            <div class="col-lg-4">
+                                                <div class="card mb-4 shadow-sm">
+                                                    <img src="{{ base_url() }}/assets/images/orange@2x.jpg" class="card-img-top" alt="...">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">{{  project['title'] }}</h6>
+                                                        <p class="card-text" style="font-size: small">{{ project['definition'] }}</p>
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <small class="text-muted">{{ project['createdAt'] }}</small>
+                                                            <small class="text-muted">{{ project['places'] }} places left</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="collaborations" role="tabpanel" aria-labelledby="home-tab">
+                                    <div class="row">
+
+                                        {% for collab in collabs%}
+                                            {% if collab['request'] %}
+                                                <div class="col-lg-4">
+                                                    <div class="card mb-4 shadow-sm">
+                                                        <img src="{{ base_url() }}/assets/images/orange@2x.jpg" class="card-img-top" alt="...">
+                                                        <div class="card-body">
+                                                            <h6 class="card-title">{{  collab['title'] }}</h6>
+                                                            <p class="card-text" style="font-size: small">{{ collab['definition'] }}</p>
+                                                            <div class="d-flex justify-content-between align-items-center">
+                                                                <small class="text-muted">{{ collab['createdAt'] }}</small>
+                                                                <small class="text-muted">{{ collab['places'] }} places left</small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                    <div class="row-cols-1 ml-4">
+                                        <div class="row">
+                                            <h6 class="text-uppercase">expert in</h6>
+                                        </div>
+                                        <div class="row-cols-1">
+                                            {% for field in knowledge %}
+                                                {% if field['professional'] %}
+                                                    {% if field['tag'] == 'Art' %}
+                                                        <span class="badge badge-warning">{{ field['definition'] }}</span>
+                                                    {% endif %}
+                                                    {% if field['tag'] == 'Technology' %}
+                                                        <span class="badge badge-dark">{{ field['definition'] }}</span>
+                                                    {% endif %}
+                                                    {% if field['tag'] == 'Social' %}
+                                                        <span class="badge badge-danger">{{ field['definition'] }}</span>
+                                                    {% endif %}
+                                                    {% if field['tag'] == 'Science' %}
+                                                        <span class="badge badge-success">{{ field['definition'] }}</span>
+                                                    {% endif %}
+                                                    {% if field['tag'] == 'Humanities' %}
+                                                        <span class="badge badge-primary">{{ field['definition'] }}</span>
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="row-cols-1 ml-4">
+                                        <div class="row">
+                                            <h6 class="text-uppercase">interested in</h6>
+                                        </div>
+                                        <div class="row-cols-1">
+                                            {% for field in knowledge %}
+                                                {% if field['professional'] == 0 %}
+                                                    <div class="row-cols-1">
+                                                        {% if field['tag'] == 'Art' %}
+                                                            <span class="badge badge-warning">{{ field['definition'] }}</span>
+                                                        {% endif %}
+                                                    </div>
+
+                                                    <div class="row-cols-1">
+                                                        {% if field['tag'] == 'Technology' %}
+                                                            <span class="badge badge-dark">{{ field['definition'] }}</span>
+                                                        {% endif %}
+                                                    </div>
+
+                                                    <div class="row-cols-1">
+                                                        {% if field['tag'] == 'Social' %}
+                                                            <span class="badge badge-danger">{{ field['definition'] }}</span>
+                                                        {% endif %}
+                                                    </div>
+
+                                                    <div class="row-cols-1">
+                                                        {% if field['tag'] == 'Science' %}
+                                                            <span class="badge badge-success">{{ field['definition'] }}</span>
+                                                        {% endif %}
+                                                    </div>
+
+                                                    <div class="row-cols-1">
+                                                        {% if field['tag'] == 'Humanities' %}
+                                                            <span class="badge badge-primary">{{ field['definition'] }}</span>
+                                                        {% endif %}
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+{% endblock %}

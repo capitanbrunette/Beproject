@@ -3,26 +3,15 @@
 {% block sidebar %}
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
-            <img src="" style="margin: 5px 10px;"  height="50" class="d-inline-block align-top" alt="">
-            <!-- <h3>PWBOX</h3>   -->
+            <!-- <img src="" style="margin: 5px 10px;"  height="50" class="d-inline-block align-top" alt=""> -->
+            <h4>Be Project</h4>
         </a>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        <button style="outline: none" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon oi oi-menu"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
-                </li>
-
-                <li class="nav-item active ">
-                    <a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
-                </li>
-
-            </ul>
-
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" data-target="#ModalSingIn" style="color: white; margin: 0px 20px;">Sign In</a>
@@ -31,7 +20,6 @@
                     <a class="nav-link"  data-toggle="modal" data-target="#ModalRegister" style="color: white; margin: 0px 20px;">Register</a>
                 </li>
             </ul>
-
         </div>
     </nav>
 
@@ -174,39 +162,51 @@
 
     <div class="content">
         <div class="container-fluid">
-            <section id="firstSection" style="background-color: #bbd1e8">
-                <div class="d-flex justify-content-center align-items-center">
-                    <div class="col-sm-2">
-                        <h1 style="color: #61072b">No esperes sentado, y pon tu creatividad a trabajar con Be project</h1>
-                        <p style="color: white">Un espacio para conseguir ser quién quieres ser. Una plataforma diseñada para impulsar tus proyectos, de una manera fàcil y ràpida.</p>
-                    </div>
-                    <div class="p-2">
-                        <img src="{{ base_url() }}/assets/images/chair@2x.jpg" class="img-fluid" alt="Responsive image">
+            <section id="firstSection">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <h1 style="color: #61072b">No esperes sentado, y pon tu creatividad a trabajar con Be project</h1>
+                            <p style="color: black">Un espacio para conseguir ser quién quieres ser. Una plataforma diseñada para impulsar tus proyectos, de una manera fàcil y ràpida.</p>
+                        </div>
+                      </div>
+                    <div class="col-lg-6" style="background-image: url('{{ base_url() }}/assets/images/chair@2x.jpg'); min-height: 30rem; background-size: cover">
+                        <!--<div class="p-5">
+                            <img src="{{ base_url() }}/assets/images/chair@2x.jpg" class="img-fluid" alt="Responsive image">
+                        </div> -->
                     </div>
                 </div>
             </section>
 
 
             <section id="secondSection" style="background-color: #61072b">
-                <div class="d-flex justify-content-center align-items-center">
-                    <div class="p-2">
-                        <img src="" class="img-fluid" alt="Responsive image">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+                        <div class="p-5">
+                            <h1 style="color:#fdb7ac">Encuentra a tu equipo perfecto de trabajo</h1>
+                            <p style="color: white">Be project está diseñado para la colaboración creativa. Comparte tus ideas, colabora con gente de otras disciplines y poner en marcha vuestros proyectos. Por fin.</p>
+                        </div>
                     </div>
-                    <div class="col-sm-2">
-                        <h3 style="color: #fdb7ac">Encuentra a tu equipo perfecto de trabajo</h3>
-                        <p style="color: white">Be project está diseñado para la colaboración creativa. Comparte tus ideas, colabora con gente de otras disciplines y poner en marcha vuestros proyectos. Por fin.</p>
+                    <div class="col-lg-6 order-lg-1" style="background-image: url('{{ base_url() }}/assets/images/orange@2x.jpg'); min-height: 30rem; background-size: cover">
+                        <!--<div class="p-5">
+                            <img src="{{ base_url() }}/assets/images/orange@2x.jpg" class="img-fluid" alt="Responsive image">
+                        </div> -->
                     </div>
                 </div>
             </section>
 
             <section id="thirdSection" style="background-color: #acd1a0">
-                <div class="d-flex justify-content-center align-items-center">
-                    <div class="col-sm-2">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-lg-6 order-lg-1">
                         <h3 style="color: #342e8b">Mantén todo organizado sin interrumpir el trabajo</h3>
                         <p style="color: white">Pwbox reúne tus archivos en un mismo lugar central, donde podrás encontrarlos fácilmente. Además, estos se sincronizarán de manera segura en todos tus dispositivos, para que puedas acceder a ellos en cualquier momento y lugar. Se acabó perder el tiempo en buscar tu trabajo.</p>
                     </div>
-                    <div class="p-2">
-                        <img src="" class="img-fluid" alt="Responsive image">
+                    <div class="col-lg-6 order-lg-2">
+                        <div class="p-5">
+                            <div style="background-image: url('{{ base_url() }}/assets/images/orange@2x.jpg'); min-height: 30rem; background-size: cover">
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -214,7 +214,7 @@
             <section id="fourthSection" style="background-color: white">
                 <div class="card-deck">
                     <div class="card">
-                        <img class="card-img-top" src="" alt="Card image cap">
+                        <img class="card-img-top" src="{{ base_url() }}/assets/images/orange@2x.jpg" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Gratuito</h5>
                             <p class="card-text">Simplemente, funciona<br>Desde 2 GB<br>Hasta 18 GB</p>
@@ -222,7 +222,7 @@
                         </div>
                     </div>
                     <div class="card">
-                        <img class="card-img-top" src="" alt="Card image cap">
+                        <img class="card-img-top" src="{{ base_url() }}/assets/images/orange@2x.jpg" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Pro</h5>
                             <p class="card-text">Lleva contigo todas tus cosas adonde vayas<br>Planes de 100 GB, 200 GB o 500 GB</p>
@@ -230,7 +230,7 @@
                         </div>
                     </div>
                     <div class="card">
-                        <img class="card-img-top" src="" alt="Card image cap">
+                        <img class="card-img-top" src="{{ base_url() }}/assets/images/orange@2x.jpg" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Business</h5>
                             <p class="card-text">Diseñado para tu empresa<br>1 TB para cinco usuarios</p>
@@ -245,12 +245,6 @@
 
 {% endblock %}
 
-{% block footer %}
-    <div class="footer__container" style="background-color: #000000; padding: 50px; width: 100%; text-align: center; color:white">
-        <p>Created by Àngela Brunet Rodríguez -  2018 ©</p>
-
-    </div>
-{% endblock %}
 
 {% block javascripts %}
     {{ parent() }}

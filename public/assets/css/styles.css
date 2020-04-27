@@ -1,21 +1,24 @@
 /*@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";*/
+html{
+    line-height: 1.15;
+}
 
 body{
     margin: 0px;
     padding: 0px;
     font-weight: 600;
+    height: 100%;
 }
 
 .navbar-brand{
     margin: 0px 20px;
 }
-
 .content{
     padding-top: 86px;
 }
 
 section{
-    padding: 80px 40px 80px;
+    padding: 1% 7%;
 }
 
 img{
@@ -23,16 +26,18 @@ img{
     max-height: 550px;
 }
 
-card{
-    whith: 300px;
+form{
+    width: 100%;
 }
 
 .form-control{
-    min-width: 420px;
+    /*min-width: 420px;*/
+    width: 100%;
 }
 
 .input-group > .form-control, .input-group > .form-control-plaintext, .input-group > .custom-select, .input-group > .custom-file{
-    min-width: 420px;
+    /*min-width: 420px;*/
+    width: 100%;
 }
 
 form .error{
@@ -48,13 +53,25 @@ form .error{
 }
 
 .nav-item{
-    font-size: 20px;
     /*font-family: 'Poppins', sans-serif;*/
-    font-size: 1.5em;
+    font-size: 1.1em;
     font-weight: 600;
-    line-height: 1.7em;
+   /* line-height: 1.7em;*/
 }
 
+.bg-dark{
+    background-color: black !important;
+}
+
+.navbar-toggler{
+    border: none;
+    outline: none;
+}
+
+.navbar-toggler-icon{
+    background: none !important;
+    color: white;
+}
 /*.ul li a:link{
     color: white;
 }
@@ -63,7 +80,10 @@ form .error{
 }
 .ul li a:active{
     color: #3b7acc;
-}*/
+}
+
+
+*/
 
 .navbar-collapse{
     flex-flow: row-reverse;
@@ -83,6 +103,80 @@ form .error{
     padding-left: 0px;
     padding-right: 0px;
 }
+
+.footer-link{
+    color: white;
+}
+
+
+
+
+/******************** PROFILE ******************/
+
+.card{
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
+}
+
+.card-profile{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.card-profile .card-avatar{
+    max-width: 130px;
+    max-height: 130px;
+    margin: -50px auto 0;
+    border-radius: 50%;
+    overflow: hidden;
+    padding: 0;
+    box-shadow: 0 16px 38px -12px rgba(0,0,0,.56), 0 4px 25px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
+}
+
+.card-body-profile{
+    padding: .9375rem 20px;
+    position: relative;
+}
+
+.card-text{
+    font-size: small;
+    font-weight: lighter;
+}
+
+.btn-primary{
+    border-radius: 30px;
+}
+
+.nav-tabs{
+    margin-bottom:5%;
+}
+
+.nav-tabs .nav-link{
+    font-weight:600;
+    border: none;
+}
+.nav-tabs .nav-link.active{
+    border: none;
+    border-bottom:2px solid #0062cc;
+}
+
+/** En comú amb Home **/
+
+.card-img-top {
+    width: 100%;
+    height: 10vw;
+    min-height: 15rem;
+    object-fit: cover;
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .col-lg-4{
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+
 
 
 

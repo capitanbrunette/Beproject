@@ -37,6 +37,12 @@ $app->get(
 );
 
 $app->get(
+    '/project/{owner}/[{project:.*}]',
+    'BeProject\Controller\ProjectController'
+);
+
+
+$app->get(
     '/delete/{user_id}',
     'BeProject\Controller\ConfigurationController:deleteAccount'
 );
@@ -44,6 +50,11 @@ $app->get(
 $app->get(
     '/{user}/notifications',
     'BeProject\Controller\NotificationController'
+);
+
+$app->get(
+    '/unfollow/{username}',
+    'BeProject\Controller\FollowController:unfollow'
 );
 
 
@@ -58,3 +69,14 @@ $app->post(
     '/signin',
     'BeProject\Controller\SessionController:setUser'
 );
+
+$app->post(
+    '/project/{owner}/[{project:.*}]',
+    'BeProject\Controller\PostProjectController'
+);
+
+$app->post(
+    '/follow/{username}',
+    'BeProject\Controller\FollowController'
+);
+

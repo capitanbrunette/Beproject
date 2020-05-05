@@ -65,10 +65,35 @@ $container['profile'] = function ($container){
     return $user_profile;
 };
 
+$container['home_content'] = function ($container){
+    $home_content = new BeProject\Model\UseCase\GetHomeContentUseCase($container->get('repository'));
+    return $home_content;
+};
+
 
 $container['delete'] = function ($container){
     $user_to_delete = new BeProject\Model\UseCase\DeleteUserUseCase($container->get('repository'));
     return $user_to_delete;
+};
+
+
+/********** PROJECTS **********/
+
+$container['post_project'] = function($container) {
+    $useCase = new BeProject\Model\UseCase\PostProjectUseCase($container->get('repository'));
+    return $useCase;
+};
+
+$container['project_content'] = function($container) {
+    $useCase = new BeProject\Model\UseCase\GetProjectUseCase($container->get('repository'));
+    return $useCase;
+};
+
+
+/********* FOLLOW ********/
+$container['follow'] = function($container) {
+    $useCase = new BeProject\Model\UseCase\FollowUseCase($container->get('repository'));
+    return $useCase;
 };
 
 

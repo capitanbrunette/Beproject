@@ -1,0 +1,113 @@
+{% extends "base.twig" %}
+
+
+{% block title %}BeProject Project{% endblock %}
+
+{% block sidebar %}
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <!-- <img src="" style="margin: 5px 10px;"  height="50" class="d-inline-block align-top" alt=""> -->
+            <h4>Be Project</h4>
+        </a>
+
+        <button style="outline: none" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon oi oi-menu"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white; margin: 0 20px;">Messages<span class="oi oi-chat" title="icon key" aria-hidden="true"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://be.test/{{ id }}/notifications" style="color: white; margin: 0 20px;">Notification <span class="oi oi-bell" title="icon key" aria-hidden="true"></span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" style="color: white;" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hello {{ id }}
+                        <img class="profile-image-menu rounded-circle" width="35" height="35" src="{{ base_url() }}/assets/images/profiles/{{ id }}.jpg">
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item" href="http://be.test/profile/{{ id }}">Profile</a>
+                        <a class="dropdown-item" href="http://be.test/configuration/{{ id }}">Configuration</a>
+                        <a class="dropdown-item" href="http://be.test/logout">Sign Out</a>
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
+    </nav>
+
+{% endblock %}
+
+
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+        <section>
+            <div class="row my-3">
+                <h2 class="mb-2 mt-2">{{ project['title'] }}</h2>
+            </div>
+            <div class="row my-3" height="50%">
+                <div class="col-lg-6">
+                    <img src="{{ base_url() }}/assets/images/orange@2x.jpg" class="card-img-top" alt="...">
+                </div>
+                <div class="col-lg-6">
+                    <div class="row mb-2 mt-2">
+                        <div class="col">
+                            <span class="oi oi-map-marker mr-1"></span> {{ project['city'] }}, {{ project['state'] }}
+                        </div>
+                        <div class="col">
+                            <span class="oi oi-person mr-1"></span> {{ project['places'] }}
+                        </div>
+                    </div>
+                    <p class="mb-2 mt-2">
+                        {{ project['definition'] }}
+                    </p>
+                    <button class="btn btn-lg btn-primary">Participate</button>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="row-cols-1">
+                <h3 class="mb-2 mt-2">Story</h3>
+                <p class="mb-2 mt-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                </p>
+            </div>
+            <div class="row-cols-1">
+                <h3 class="mb-2 mt-2">Subprojects</h3>
+                <div class="row">
+                    {% for subproject in subprojects%}
+                        <div class="col-lg-4">
+                            <div class="card mb-4 shadow-sm">
+                                <img src="{{ base_url() }}/assets/images/orange@2x.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h6 class="card-title">{{  subproject['title'] }}</h6>
+                                    <p class="card-text" style="font-size: small">{{ subproject['definition'] }}</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">{{ subproject['createdAt'] }}</small>
+                                        <small class="text-muted">{{ subproject['places'] }} places left</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+
+
+            <h3 class="mb-2 mt-2">Places</h3>
+            <p class="mb-2 mt-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            </p>
+
+        </section>
+    </div>
+</div>
+{% endblock %}

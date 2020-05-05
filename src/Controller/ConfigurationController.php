@@ -13,7 +13,6 @@ use \Psr\Container\ContainerInterface;
 class ConfigurationController
 {
     protected $container;
-    private $user;
 
     public function __construct(ContainerInterface $container)
     {

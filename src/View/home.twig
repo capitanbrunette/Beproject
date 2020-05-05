@@ -49,6 +49,81 @@
 
     <div class="content">
         <div class="container-fluid">
+
+            <section id="create-project">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Start Project
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Create project</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <form id = "formCreateProject"  method="post" action="/project/{{ id }}/">
+
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="prtitle">Title</label>
+                                        <input type="text" class="form-control" id="prtitle" name="prtitle" placeholder="Choose your project's title">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="prlocation">Location</label>
+                                        <select class="form-control" id="prlocation" name="prlocation">
+                                            {% for location in locations %}
+                                                <option value="{{ location['locationId'] }}">{{ location['city'] }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col">
+                                            <label for="prtag">Category</label>
+                                            <select class="form-control" id="prtag" name="prtag">
+                                                {% for tag in tags %}
+                                                    <option value="{{ tag['fieldId'] }}">{{ tag['tag'] }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <div class="form-group col">
+                                            <label for="prplaces">Places</label>
+                                            <select class="form-control" id="prplaces" name="prplaces">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="prdescription">Brief or description of the project</label>
+                                        <textarea class="form-control" id="prdescription" name="prdescription" rows="3"></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
             <section id="search-section">
 
                 <div class="searchbar">
@@ -104,6 +179,8 @@
 
                 </div>-->
 
+
+
             </section>
 
             <section id="projects-section">
@@ -112,111 +189,95 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-4">
-                            <div class="card mb-4 shadow-sm">
-                                <img src="{{ base_url() }}/assets/images/orange@2x.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h6 class="card-title">Project title</h6>
-                                    <p class="card-text" style="font-size: small">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <small class="text-muted">15/08/2020</small>
-                                        <small class="text-muted">2 places left</small>
+
+                        {% for project in projects%}
+
+                            <div class="col-lg-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <img src="{{ base_url() }}/assets/images/orange@2x.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h6 class="card-title">{{  project['title'] }}</h6>
+                                        <p class="card-text" style="font-size: small">{{ project['definition'] }}</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <small class="text-muted">{{ project['createdAt'] }}</small>
+                                            <small class="text-muted">{{ project['places'] }} places left</small>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="col-lg-4">
-                            <div class="card mb-4 shadow-sm">
-                                <img src="{{ base_url() }}/assets/images/orange@2x.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h6 class="card-title">Project title</h6>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <small class="text-muted">15/08/2020</small>
-                                        <small class="text-muted">2 places left</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4">
-                            <div class="card mb-4 shadow-sm">
-                                <img src="{{ base_url() }}/assets/images/orange@2x.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h6 class="card-title">Project title</h6>
-                                    <p class="card-text" style="font-size: small">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <small class="text-muted">15/08/2020</small>
-                                        <small class="text-muted">2 places left</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4">
-                            <div class="card mb-4 shadow-sm">
-                                <img src="{{ base_url() }}/assets/images/orange@2x.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h6 class="card-title">Project title</h6>
-                                    <p class="card-text" style="font-size: small">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <small class="text-muted">15/08/2020</small>
-                                        <small class="text-muted">2 places left</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4">
-                            <div class="card mb-4 shadow-sm">
-                                <img src="{{ base_url() }}/assets/images/orange@2x.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h6 class="card-title">Project title</h6>
-                                    <p class="card-text" style="font-size: small">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <small class="text-muted">15/08/2020</small>
-                                        <small class="text-muted">2 places left</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-lg-4">
-                            <div class="card mb-4 shadow-sm">
-                                <img src="{{ base_url() }}/assets/images/orange@2x.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h6 class="card-title">Project title</h6>
-                                    <p class="card-text" style="font-size: small">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <small class="text-muted">15/08/2020</small>
-                                        <small class="text-muted">2 places left</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-
+                        {% endfor %}
 
                     </div>
             </section>
 
-            <section id="thirdSection" style="background-color: #b3d7ff">
+            <section id="people-section"> <!-- style="background-color: #b3d7ff #d39e00-->
+                <div class="row mb-4">
+                    <h5 style="margin: 30px 15px;font-weight: bold;">Find your perfect patner</h5>
+                </div>
 
-            </section>
+                <div class="row">
+                    {% for profile in profiles %}
+                        <div class="col-lg-4">
+                            <div class="card mb-4 shadow-sm card-profile">
+                                <div class="card-avatar">
+                                    <img src="{{ base_url() }}/assets/images/profiles/{{ profile['username'] }}.jpg" class="card-img-top" alt="profileimage">
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="card-title">@{{ profile['username'] }}</h6>
+                                    <h6 class="card-title">{{ profile['name'] }} {{ profile['fsurname'] }} {{ profile['lsurname'] }}</h6>
+                                    <p class="card-text text-black-50" style="font-size: small"><span class="oi oi-map-marker mr-1"></span>{{ profile['city'] }}, {{ profile['state'] }}, {{ profile['country'] }}</p>
 
-            <section id="fourthSection" style="background-color: #d39e00">
 
-            </section>
 
-            <section id="fifthSection" style="background-color: white">
+                                    <div class="row-cols-1 mt-4">
+                                        <form action="/follow/{{ profile['username'] }}" method="post">
+                                            <button class="btn btn-primary" style="width: 100%">Follow</button>
+                                        </form>
+                                        <!--<form action="/unfollow/{{ profile['username'] }}" method="get">
+                                            <button class="btn btn-primary" style="width: 100%">Unfollow</button>
+                                        </form>-->
+                                    </div>
 
+                                    <div class="row mt-4">
+                                        <div class="col-4">
+                                            <p class="small font-weight-bold">Projects</p>
+                                            <p>{{ profile['projects'] }}</p>
+                                        </div>
+                                        <div class="col-4">
+                                            <p class="small font-weight-bold">Followers</p>
+                                            <p>{{ profile['followers'] }}</p>
+                                        </div>
+                                        <div class="col-4">
+                                            <p class="small font-weight-bold">Following</p>
+                                            <p>{{ profile['following'] }}</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
             </section>
         </div>
 
     </div>
+
+
+    <!-- <div class="col-lg-4">
+                            <div class="card mb-4 shadow-sm">
+                                <img src="{{ base_url() }}/assets/images/orange@2x.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h6 class="card-title">Project title</h6>
+                                    <p class="card-text" style="font-size: small">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">15/08/2020</small>
+                                        <small class="text-muted">2 places left</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+
 
 {% endblock %}
 

@@ -22,9 +22,7 @@ class PostUserUseCase{
             !isset($rawData['confirm_password'])||!isset($rawData['email'])){
             throw new \Exception('Strange error!');
         }*/
-        /*if($rawData['first_name']=='' || $rawData['birthdate']==''){
-            throw new \Exception('Empty fields!');
-        }*/
+
         if($rawData['password']!=$rawData['confirm_password'] || !preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).+$/', $rawData['password'])
            ||  strlen($rawData['password']) < 6 || strlen($rawData['password']) > 12 ){
             throw new \Exception('Password error!');

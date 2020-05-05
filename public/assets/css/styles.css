@@ -159,6 +159,10 @@ form .error{
     border-bottom:2px solid #0062cc;
 }
 
+.small{
+    font-size: 70%;
+}
+
 /** En comú amb Home **/
 
 .card-img-top {

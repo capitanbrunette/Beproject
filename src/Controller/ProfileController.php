@@ -37,9 +37,7 @@ class ProfileController
                         'user'=>$data['user'],
                         'followers'=>$data['followers'],
                         'following'=>$data['following'],
-                        'nprojects'=>$data['nprojects'],
                         'projects'=>$data['projects'],
-                        'ncollabs'=>$data['ncollabs'],
                         'collabs'=>$data['collabs'],
                         'knowledge'=>$data['knowledge'],
                         'isadmin'=>$isadmin

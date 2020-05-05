@@ -9,6 +9,19 @@
 namespace BeProject\Model;
 
 class User{
+
+    //private $profile_picture;
+
+    /**
+     * User constructor.
+     * @param $id
+     * @param $username
+     * @param $email
+     * @param $password
+     * @param $createdAt
+     * @param $updatedAt
+     */
+
     private $id;
     private $username;
     private $email;
@@ -22,18 +35,6 @@ class User{
     private $firstName;
     private $lastName;
     private $definition;
-
-    //private $profile_picture;
-
-    /**
-     * User constructor.
-     * @param $id
-     * @param $username
-     * @param $email
-     * @param $password
-     * @param $createdAt
-     * @param $updatedAt
-     */
 
     public function __construct($id, $username, $email, $password, $createdAt, $updatedAt, $validation)
     {

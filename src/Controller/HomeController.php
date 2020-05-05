@@ -26,18 +26,26 @@ class homeController{
 
             /*if(!isset($arguments['folder'])){
                 $arguments['folder']='';
-            }
+            }*/
 
-            $service = $this->container->get('get_contents_in_folder');
-            $data = $service($arguments['folder'],$arguments['user_id']);
+
+            $service = $this->container->get('home_content');
+            $data = $service();
+            /*$data = $service($arguments['folder'],$arguments['user_id']);
             $arguments['folder']='/'.$arguments['folder'];*/
 
             return $this->container->get('View')->render($response, 'home.twig',
                 [
-                'id' => $_SESSION['user_id']//, 'folders'=>$data['folders'], 'files'=>$data['files'], 'path'=>$arguments['folder'], 'isadmin'=>$data['isadmin']
+                    'id' => $_SESSION['user_id'],
+                    'projects'=>$data['projects'],
+                    'profiles'=>$data['profiles'],
+                    'tags'=>$data['tags'],
+                    'locations'=>$data['locations']
+                    //, 'files'=>$data['files'], 'path'=>$arguments['folder'], 'isadmin'=>$data['isadmin']
                 ]);
         }else{
             return $response->withStatus(302)->withHeader('Location', "/");
+
         }
 
     }

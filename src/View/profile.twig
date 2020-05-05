@@ -54,7 +54,7 @@
                         <div class="card-body card-body-profile">
                             <h6 class="card-category text-uppercase">{{ user['username'] }}</h6>
                             <h4>{{ user['name'] }} {{ user['fsurname'] }} {{ user['lsurname'] }}</h4>
-                            <h6 class="card-location">{{ user['neighborhood'] }} {{ user['city'] }} {{ user['state'] }} {{ user['country'] }}</h6>
+                            <h6 class="card-location">{{ user['city'] }} {{ user['state'] }} {{ user['country'] }}</h6>
                             <h6 class="card-quote">{{ user['quote'] }}</h6>
                             <p class="card-text">{{ user['about'] }}</p>
                             {% if isadmin %}
@@ -76,8 +76,8 @@
                                 <div class="col-lg-6 justify-content-start">
                                     <h6 class="card-element">{{ followers }}</h6>
                                     <h6 class="card-element">{{ following }}</h6>
-                                    <h6 class="card-element">{{ nprojects }}</h6>
-                                    <h6 class="card-element">{{ ncollabs }}</h6>
+                                    <h6 class="card-element">{{ projects|length }}</h6>
+                                    <h6 class="card-element">{{ collabs|length }}</h6>
                                 </div>
                             </div>
 
